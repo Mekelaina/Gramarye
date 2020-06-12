@@ -1,7 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"7": "block/crystal"
+		"particle": "gramarye:block/crystal",
+		"7": "gramarye:block/crystal"
 	},
 	"elements": [
 		{

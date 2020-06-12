@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": {"model": "gramarye:block/broadcaster"},
+    "facing=south": {"model": "gramarye:block/broadcaster", "y": 180},
+    "facing=west": {"model": "gramarye:block/broadcaster", "y":  270},
+    "facing=east": {"model": "gramarye:block/broadcaster", "y": 90}
+  }
+}

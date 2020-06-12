@@ -4,21 +4,17 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.shapes.*;
+import net.minecraft.util.math.shapes.ISelectionContext;
+import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 
-import java.util.stream.Stream;
+public class SpellTable extends Block {
 
-public class CrystalBlock extends Block {
-
-
-
-    private static final VoxelShape bounds = Block.makeCuboidShape(0, 0, 0, 16, 19.5, 16);
-
-
-    public CrystalBlock(Properties properties) {
+    public SpellTable(Properties properties) {
         super(properties);
     }
+
+    public static final VoxelShape bounds = Block.makeCuboidShape(0, 0, 0, 16, 19, 16);
 
     @Override
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
@@ -27,6 +23,6 @@ public class CrystalBlock extends Block {
 
     @Override
     public BlockRenderLayer getRenderLayer() {
-        return BlockRenderLayer.TRANSLUCENT;
+        return BlockRenderLayer.CUTOUT_MIPPED;
     }
 }
