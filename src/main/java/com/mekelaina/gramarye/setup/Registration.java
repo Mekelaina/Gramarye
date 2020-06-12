@@ -3,6 +3,7 @@ package com.mekelaina.gramarye.setup;
 
 import com.mekelaina.gramarye.Gramarye;
 import com.mekelaina.gramarye.blocks.ModBlocks;
+import com.mekelaina.gramarye.items.ModItems;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
@@ -17,6 +18,7 @@ public class Registration {
 
     public static void init(IEventBus bus){
         ModBlocks.BLOCKS.register(bus);
+        ModItems.ITEMS.register(bus);
     }
 
     @SubscribeEvent
