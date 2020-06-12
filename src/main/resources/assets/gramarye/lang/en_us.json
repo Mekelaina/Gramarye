@@ -1,0 +1,21 @@
+{
+  "_comment": "Blocks",
+  "block.gramarye.broadcaster": "Broadcaster",
+  "block.gramarye.charger": "Charger",
+  "block.gramarye.crystalblock": "Experion Crystal Cluster",
+  "block.gramarye.crystallizer": "Experion Crystallizer",
+  "block.gramarye.embuing_pillar": "Embuing Pillar",
+  "block.gramarye.embuing_table": "Embuing Table",
+  "block.gramarye.obelisk": "Experion Obelisk",
+  "block.gramarye.shrine": "Shrine",
+  "block.gramarye.spell_table": "Spell Table",
+  "block.gramarye.tesseract": "Experion Tesseract",
+
+  "_comment": "Items",
+  "item.gramarye.crystal": "Experion Crystal",
+  "item.gramarye.oak_staff": "Oaken Staff",
+  "item.gramarye.wand": "Wand",
+
+  "_comment": "Creative Tabs",
+  "itemGroup.gramarye": "Gramarye"
+}
