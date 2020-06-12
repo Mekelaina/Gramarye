@@ -1,6 +1,7 @@
 package com.mekelaina.gramarye;
 
 import com.mekelaina.gramarye.setup.*;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
@@ -29,6 +30,10 @@ public class Gramarye {
 
         FMLJavaModLoadingContext.get().getModEventBus().addListener(ModSetup::init);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(ClientSetup::init);
+
+        IEventBus modLoadingContext = FMLJavaModLoadingContext.get().getModEventBus();
+
+        Registration.init(modLoadingContext);
     }
 
     private void setup(){
