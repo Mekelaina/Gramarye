@@ -14,4 +14,6 @@ public class ModItems {
             new Wand(new Item.Properties().maxStackSize(1).group(Gramarye.setup.itemGroup)));
     public static final RegistryObject<Item> STAFF = ITEMS.register("oak_staff", () ->
             new Staff(new Item.Properties().maxStackSize(1).group(Gramarye.setup.itemGroup)));
+    public static final RegistryObject<Item> CRYSTAL = ITEMS.register("crystal", () ->
+            new Crystal(new Item.Properties().maxStackSize(64).group(Gramarye.setup.itemGroup)));
 }
