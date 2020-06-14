@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "facing=north": {"model": "gramarye:block/battery"},
+    "facing=south": {"model": "gramarye:block/battery", "y": 180},
+    "facing=west": {"model": "gramarye:block/battery", "y":  270},
+    "facing=east": {"model": "gramarye:block/battery", "y": 90},
+    "facing=up": {"model": "gramarye:block/battery", "x": -90},
+    "facing=down": {"model": "gramarye:block/battery", "x": 90}
+  }
+}

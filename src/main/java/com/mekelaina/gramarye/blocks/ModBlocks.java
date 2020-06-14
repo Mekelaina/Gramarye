@@ -30,8 +30,8 @@ public class ModBlocks {
                     .harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> CRYSTALLIZER = BLOCKS.register("crystallizer", () ->
-            new Crystallizer(Block.Properties.create(Material.ROCK).hardnessAndResistance(3f).harvestLevel(1)
-                    .harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)));
+            new Crystallizer(Block.Properties.create(Material.IRON).hardnessAndResistance(3f).harvestLevel(1)
+                    .harvestTool(ToolType.PICKAXE).sound(SoundType.METAL)));
 
     public static final RegistryObject<Block> OBELISK = BLOCKS.register("obelisk", () ->
             new Obelisk(Block.Properties.create(Material.ROCK).hardnessAndResistance(3f).harvestLevel(1)
@@ -56,4 +56,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> TESSERACT = BLOCKS.register("tesseract", ()->
             new Tesseract(Block.Properties.create(Material.ROCK).hardnessAndResistance(3f).harvestLevel(1)
                     .harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)));
+
+    public static final RegistryObject<Block> BATTERY = BLOCKS.register("battery", ()->
+            new Battery(Block.Properties.create(Material.IRON).hardnessAndResistance(3f).harvestLevel(1)
+            .harvestTool(ToolType.PICKAXE).sound(SoundType.METAL)));
 }

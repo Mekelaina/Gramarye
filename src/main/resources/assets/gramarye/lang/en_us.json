@@ -10,6 +10,7 @@
   "block.gramarye.shrine": "Shrine",
   "block.gramarye.spell_table": "Spell Table",
   "block.gramarye.tesseract": "Experion Tesseract",
+  "block.gramarye.battery": "Experion Well",
 
   "_comment": "Items",
   "item.gramarye.crystal": "Experion Crystal",
