@@ -3,12 +3,17 @@ package com.mekelaina.gramarye.setup;
 
 import com.mekelaina.gramarye.Gramarye;
 import com.mekelaina.gramarye.blocks.ModBlocks;
+import com.mekelaina.gramarye.blocks.containers.ModContainers;
+import com.mekelaina.gramarye.blocks.tiles.ModTileEntities;
+import com.mekelaina.gramarye.entities.ModEntities;
 import com.mekelaina.gramarye.items.ModItems;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.util.DamageSource;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModContainer;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.IForgeRegistry;
@@ -19,6 +24,9 @@ public class Registration {
     public static void init(IEventBus bus){
         ModBlocks.BLOCKS.register(bus);
         ModItems.ITEMS.register(bus);
+        ModEntities.ENTITY_TYPES.register(bus);
+        ModTileEntities.TILE_ENTITIES.register(bus);
+        ModContainers.CONTAINERS.register(bus);
     }
 
     @SubscribeEvent
@@ -35,4 +43,6 @@ public class Registration {
                 });
         Gramarye.LOGGER.debug("Registered BlockItems");
     }
+
+
 }

@@ -14,10 +14,11 @@ public class ModBlocks {
     public ModBlocks() {
 
     }
+    //Blocks
 
     public static final DeferredRegister<Block> BLOCKS = new DeferredRegister<>(ForgeRegistries.BLOCKS, Gramarye.MODID);
 
-    public static final RegistryObject<Block> CRYSTAL = BLOCKS.register("crystalblock", () ->
+    public static final RegistryObject<Block> CRYSTALBLOCK = BLOCKS.register("crystalblock", () ->
             new CrystalBlock(Block.Properties.create(Material.GLASS).hardnessAndResistance(0.3f, 3.0f)
             .sound(SoundType.GLASS).harvestTool(ToolType.PICKAXE).harvestLevel(0).lightValue(7)));
 
@@ -60,4 +61,6 @@ public class ModBlocks {
     public static final RegistryObject<Block> BATTERY = BLOCKS.register("battery", ()->
             new Battery(Block.Properties.create(Material.IRON).hardnessAndResistance(3f).harvestLevel(1)
             .harvestTool(ToolType.PICKAXE).sound(SoundType.METAL)));
+
+
 }
