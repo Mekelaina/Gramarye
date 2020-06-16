@@ -1,0 +1,97 @@
+{
+	"credit": "Made with Blockbench",
+	"texture_size": [128, 128],
+	"textures": {
+		"0": "gramarye:item/gramaryan_armor"
+	},
+	"elements": [
+		{
+			"from": [8.71196, -0.225, 4.59783],
+			"to": [13.21196, 4.775, 9.59783],
+			"rotation": {"angle": 0, "axis": "y", "origin": [10.96196, 0.75, 4.59783]},
+			"faces": {
+				"north": {"uv": [6.25, 0.875, 6.75, 1.5], "texture": "#0"},
+				"east": {"uv": [5.625, 0.875, 6.25, 1.5], "texture": "#0"},
+				"south": {"uv": [7.375, 0.875, 7.875, 1.5], "texture": "#0"},
+				"west": {"uv": [6.75, 0.875, 7.375, 1.5], "texture": "#0"},
+				"up": {"uv": [6.75, 0.875, 6.25, 0.25], "texture": "#0"},
+				"down": {"uv": [7.25, 0.25, 6.75, 0.875], "texture": "#0"}
+			}
+		},
+		{
+			"from": [3.96196, -0.225, 4.59783],
+			"to": [8.46196, 4.775, 9.59783],
+			"rotation": {"angle": 0, "axis": "y", "origin": [5.96196, 0.75, 4.59783]},
+			"faces": {
+				"north": {"uv": [7, 7, 7.5, 7.625], "texture": "#0"},
+				"east": {"uv": [6.375, 7, 7, 7.625], "texture": "#0"},
+				"south": {"uv": [8.125, 7, 8.625, 7.625], "texture": "#0"},
+				"west": {"uv": [7.5, 7, 8.125, 7.625], "texture": "#0"},
+				"up": {"uv": [7.5, 7, 7, 6.375], "texture": "#0"},
+				"down": {"uv": [8, 6.375, 7.5, 7], "texture": "#0"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"translation": [0, 3, 1],
+			"scale": [0.55, 0.55, 0.55]
+		},
+		"thirdperson_lefthand": {
+			"translation": [0, 3, 1],
+			"scale": [0.55, 0.55, 0.55]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, -90, 25],
+			"translation": [-0.62, 6.95, 1.13],
+			"scale": [0.68, 0.68, 0.68]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, -90, 25],
+			"translation": [-0.37, 7.45, 1.13],
+			"scale": [0.68, 0.68, 0.68]
+		},
+		"ground": {
+			"translation": [0, 2, 0],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"gui": {
+			"rotation": [30, 41, 0],
+			"translation": [0.25, 4.25, 0]
+		},
+		"head": {
+			"rotation": [0, 180, 0],
+			"translation": [0, 13, 7]
+		},
+		"fixed": {
+			"rotation": [0, 180, 0],
+			"translation": [0, 5.5, -1.75]
+		}
+	},
+	"groups": [
+		{
+			"name": "bipedLeftLeg",
+			"shade": false,
+			"origin": [1.9, 12, 0],
+			"children": [
+				{
+					"name": "armorRightBoot",
+					"origin": [1.9, 12, 0],
+					"children": [0]
+				}
+			]
+		},
+		{
+			"name": "bipedRightLeg",
+			"shade": false,
+			"origin": [-1.9, 12, 0],
+			"children": [
+				{
+					"name": "armorRightBoot",
+					"origin": [-1.9, 12, 0],
+					"children": [1]
+				}
+			]
+		}
+	]
+}
