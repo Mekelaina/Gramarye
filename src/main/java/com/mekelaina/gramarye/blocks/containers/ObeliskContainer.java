@@ -103,6 +103,10 @@ public class ObeliskContainer extends ExtendedContainer {
         return itemStack;
     }
 
+    public ObeliskTile getTileEntity() {
+        return (ObeliskTile)this.tileEntity;
+    }
+
     private boolean isItemValid(ItemStack stack) {
         Gramarye.LOGGER.debug(stack);
         if(stack.getItem() == Items.EXPERIENCE_BOTTLE || stack.getItem() == ModItems.CRYSTAL.get()

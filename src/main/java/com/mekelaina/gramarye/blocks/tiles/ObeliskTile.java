@@ -38,6 +38,7 @@ public class ObeliskTile extends TileEntity implements ITickableTileEntity, INam
 
     private int counter;
     private int inputType=0;
+    private ItemStack lastItem;
 
     private Random random = new Random();
 
@@ -63,7 +64,9 @@ public class ObeliskTile extends TileEntity implements ITickableTileEntity, INam
         if(counter <=0) {
             handler.ifPresent(handler1 -> {
                 ItemStack stack = handler1.getStackInSlot(0);
-                if(isItemValid(stack)) {
+                if(stack.getItem() == Items.EXPERIENCE_BOTTLE || stack.getItem() == ModItems.CRYSTAL.get()
+                        || stack.getItem() == ModBlocks.CRYSTALBLOCK.get().asItem()) {
+                    lastItem = stack.copy();
                     handler1.extractItem(0, 1, false);
                     counter = 20;
                     markDirty();
@@ -115,7 +118,7 @@ public class ObeliskTile extends TileEntity implements ITickableTileEntity, INam
     public CompoundNBT write(CompoundNBT compound) {
         handler.ifPresent(h -> {
             CompoundNBT compoundNBT = ((INBTSerializable<CompoundNBT>)h).serializeNBT();
-            compound.put("obeliskInv", compoundNBT);
+            compound.put("inv", compoundNBT);
         });
         energy.ifPresent(h -> {
             CompoundNBT compoundNBT = ((INBTSerializable<CompoundNBT>)h).serializeNBT();
@@ -143,7 +146,8 @@ public class ObeliskTile extends TileEntity implements ITickableTileEntity, INam
             @Nonnull
             @Override
             public ItemStack insertItem(int slot, @Nonnull ItemStack stack, boolean simulate) {
-                if(stack.getItem() != ModItems.CRYSTAL.get()){
+                if(stack.getItem() != ModItems.CRYSTAL.get() && stack.getItem() != Items.EXPERIENCE_BOTTLE
+                && stack.getItem() != ModBlocks.CRYSTALBLOCK.get().asItem()){
                     return stack;
                 }
                 return super.insertItem(slot, stack, simulate);
@@ -175,12 +179,28 @@ public class ObeliskTile extends TileEntity implements ITickableTileEntity, INam
     }
 
     private IEnergyStorage createEnergy() {
-        return new CustomEnergyStorage(65536, 0);
+        return new CustomEnergyStorage(2048, 0);
     }
 
     private int getXpPerInput()
     {
-        int rtn = 0;
+       if(lastItem != null) {
+           if(lastItem.getItem() == Items.EXPERIENCE_BOTTLE) {
+               lastItem = ItemStack.EMPTY;
+               return 3 + this.world.rand.nextInt(5) + this.world.rand.nextInt(5);
+           }
+           if(lastItem.getItem() == ModItems.CRYSTAL.get()) {
+               lastItem = ItemStack.EMPTY;
+               return 20;
+           }
+           if(lastItem.getItem() == ModBlocks.CRYSTALBLOCK.get().asItem()) {
+               lastItem = ItemStack.EMPTY;
+               return 100;
+           }
+       }
+       return 0;
+
+        /* int rtn = 0;
 
         switch(inputType) {
             case 0: break;
@@ -189,7 +209,14 @@ public class ObeliskTile extends TileEntity implements ITickableTileEntity, INam
             case 3: rtn = 100; break;
             default: rtn = 0; break;
         }
-        return rtn;
+        return rtn;*/
+    }
+
+    public int getCapacity() {
+        AtomicInteger temp = new AtomicInteger();
+         energy.ifPresent(e -> {
+             temp.set(e.getMaxEnergyStored());});
+         return temp.get();
     }
 
     private boolean isItemValid(ItemStack stack) {
