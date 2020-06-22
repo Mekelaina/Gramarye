@@ -39,6 +39,9 @@ public class ObeliskTile extends TileEntity implements ITickableTileEntity, INam
     private int counter;
     private int inputType=0;
     private ItemStack lastItem;
+    private double speed = 2;
+    private double translation = 0;
+    private double lastTranslation = 0;
 
     private Random random = new Random();
 
@@ -73,6 +76,7 @@ public class ObeliskTile extends TileEntity implements ITickableTileEntity, INam
                 }
             });
         }
+
 
         sendOutPower();
 
@@ -111,6 +115,8 @@ public class ObeliskTile extends TileEntity implements ITickableTileEntity, INam
         handler.ifPresent(handler1 -> ((INBTSerializable<CompoundNBT>)handler1).deserializeNBT(invTag));
         CompoundNBT energyTag = compound.getCompound("experion");
         energy.ifPresent(energy1 -> ((CustomEnergyStorage)energy1).setEnergy(energyTag.getInt("experion")));
+        CompoundNBT speedTag = compound.getCompound("speed");
+        this.speed = speedTag.getDouble("speed");
         super.read(compound);
     }
 
@@ -124,6 +130,7 @@ public class ObeliskTile extends TileEntity implements ITickableTileEntity, INam
             CompoundNBT compoundNBT = ((INBTSerializable<CompoundNBT>)h).serializeNBT();
             compound.put("experion", compoundNBT);
         });
+        compound.putDouble("speed", this.speed);
         return super.write(compound);
     }
 
@@ -200,16 +207,15 @@ public class ObeliskTile extends TileEntity implements ITickableTileEntity, INam
        }
        return 0;
 
-        /* int rtn = 0;
+    }
 
-        switch(inputType) {
-            case 0: break;
-            case 1: rtn = 3 + this.world.rand.nextInt(5) + this.world.rand.nextInt(5); break;
-            case 2: rtn = 20; break;
-            case 3: rtn = 100; break;
-            default: rtn = 0; break;
-        }
-        return rtn;*/
+    private void calculateTranslation() {
+        this.lastTranslation = this.translation;
+        this.translation += (float)(Math.sin(speed * counter));
+    }
+
+    public double getTranslation() {
+        return translation;
     }
 
     public int getCapacity() {

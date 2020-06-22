@@ -10,6 +10,7 @@ import net.minecraft.item.ItemUseContext;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 
@@ -21,7 +22,10 @@ public class Wand extends Item {
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
-        SpellBoltEntity spellBoltEntity = new SpellBoltEntity(ModEntities.SPELLBOLT.get(), playerIn, 2, 2, 2, worldIn);
+        Vec3d forward = playerIn.getForward();
+        SpellBoltEntity spellBoltEntity = new SpellBoltEntity(worldIn, playerIn, forward.getX() + 2, forward.getY() ,
+                forward.getZ() + 2);
+
         worldIn.addEntity(spellBoltEntity);
 
         return new ActionResult<ItemStack>(ActionResultType.SUCCESS, playerIn.getHeldItem(handIn));

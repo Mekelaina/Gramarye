@@ -18,7 +18,7 @@ public class ClientSetup {
 
     public static void init(final FMLClientSetupEvent event) {
         ScreenManager.registerFactory(ModContainers.OBELISK_CONTAINER.get(), ObeliskScreen::new);
-        RenderingRegistry.registerEntityRenderingHandler(SpellBoltEntity.class, DefaultSpellBoltRenderer::new);
+        //RenderingRegistry.registerEntityRenderingHandler(SpellBoltEntity.class, DefaultSpellBoltRenderer::new);
     }
 
     @SubscribeEvent

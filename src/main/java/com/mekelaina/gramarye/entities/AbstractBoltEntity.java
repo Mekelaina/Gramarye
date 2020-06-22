@@ -2,7 +2,9 @@ package com.mekelaina.gramarye.entities;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.IRendersAsItem;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.projectile.DamagingProjectileEntity;
 import net.minecraft.entity.projectile.ProjectileHelper;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.ListNBT;
@@ -15,8 +17,9 @@ import net.minecraft.util.math.*;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.fml.client.registry.IRenderFactory;
 
-public abstract class AbstractBoltEntity extends Entity {
+public abstract class AbstractBoltEntity extends DamagingProjectileEntity implements IRendersAsItem {
 
     public LivingEntity  shootingEntity;
     private int ticksAlive;
@@ -29,7 +32,9 @@ public abstract class AbstractBoltEntity extends Entity {
         super(entityType, world);
     }
 
-    public AbstractBoltEntity(EntityType<? extends AbstractBoltEntity> EntityType, double x, double y, double z, double xAccIn, double yAccIn, double zAccIn, World world) {
+    /*protected AbstractBoltEntity();*/
+
+   /* public AbstractBoltEntity(EntityType<? extends AbstractBoltEntity> EntityType, double x, double y, double z, double xAccIn, double yAccIn, double zAccIn, World world) {
         this(EntityType, world);
         this.setLocationAndAngles(x, y, z, this.rotationYaw, this.rotationPitch);
         this.setPosition(x, y, z);
@@ -52,7 +57,7 @@ public abstract class AbstractBoltEntity extends Entity {
         this.accelerationX = xAccIn / d0 * 0.1D;
         this.accelerationY = yAccIn / d0 * 0.1D;
         this.accelerationZ = zAccIn / d0 * 0.1D;
-    }
+    }*/
 
     @OnlyIn(Dist.CLIENT)
     public boolean isInRangeToRenderDist(double distance) {

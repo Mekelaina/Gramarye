@@ -11,26 +11,28 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.network.NetworkHooks;
 
-public class SpellBoltEntity extends AbstractBoltEntity{
+public class SpellBoltEntity extends AbstractBoltEntity2{
 
     protected boolean doesDamage = false;
     protected float damageAmt = 0f;
     protected DamageSource damageSource = DamageSource.GENERIC;
 
-    public SpellBoltEntity(EntityType<? extends  AbstractBoltEntity> entityType, World world) {
+    public SpellBoltEntity(EntityType<SpellBoltEntity> entityType, World world) {
         super(entityType, world);
 
     }
 
-/*    @Override
-    public IPacket<?> createSpawnPacket() {
-        return NetworkHooks.getEntitySpawningPacket(this);
-    }*/
+    @OnlyIn(Dist.CLIENT)
+    public SpellBoltEntity(World worldIn, double x, double y, double z, double accelX, double accelY, double accelZ) {
+        super(ModEntities.SPELLBOLT.get(), x, y, z, accelX, accelY, accelZ, worldIn);
+    }
 
-    public SpellBoltEntity(EntityType<? extends AbstractBoltEntity> entityType, LivingEntity shootingEntityIn, double xAccIn, double yAccIn, double zAccIn, World world) {
-        super(entityType, shootingEntityIn, xAccIn, yAccIn, zAccIn, world);
+    public SpellBoltEntity(World worldIn, LivingEntity shooter, double accelX, double accelY, double accelZ) {
+        super(ModEntities.SPELLBOLT.get(), shooter, accelX, accelY, accelZ, worldIn);
     }
 
 
@@ -46,10 +48,7 @@ public class SpellBoltEntity extends AbstractBoltEntity{
         this.remove();
     }
 
-    @Override
-    protected void registerData() {
 
-    }
 
     public boolean isDoesDamage() {
         return doesDamage;
