@@ -21,5 +21,8 @@
   "itemGroup.gramarye": "Gramarye",
 
   "_comment": "Spell Names",
-  "spell.gramarye.spark": "Spark"
+  "spell.gramarye.spark": "Spark",
+
+  "_comment": "SpellBook Names",
+  "item.gramarye.book.spark": "Book of Spark"
 }

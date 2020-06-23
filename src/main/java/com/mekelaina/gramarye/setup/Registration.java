@@ -2,10 +2,13 @@ package com.mekelaina.gramarye.setup;
 
 
 import com.mekelaina.gramarye.Gramarye;
+import com.mekelaina.gramarye.Spell.Spell;
+import com.mekelaina.gramarye.Spell.SpellSetup;
 import com.mekelaina.gramarye.blocks.ModBlocks;
 import com.mekelaina.gramarye.blocks.containers.ModContainers;
 import com.mekelaina.gramarye.blocks.tiles.ModTileEntities;
 import com.mekelaina.gramarye.entities.ModEntities;
+import com.mekelaina.gramarye.items.GenericSpellBook;
 import com.mekelaina.gramarye.items.ModItems;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -22,6 +25,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 public class Registration {
 
     public static void init(IEventBus bus){
+        SpellSetup.registerSpellBooks();
         ModBlocks.BLOCKS.register(bus);
         ModItems.ITEMS.register(bus);
         ModEntities.ENTITY_TYPES.register(bus);
@@ -43,6 +47,4 @@ public class Registration {
                 });
         Gramarye.LOGGER.debug("Registered BlockItems");
     }
-
-
 }
