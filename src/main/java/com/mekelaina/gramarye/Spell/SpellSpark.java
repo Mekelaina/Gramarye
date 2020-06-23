@@ -9,6 +9,7 @@ import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUseContext;
 import net.minecraft.state.properties.BlockStateProperties;
+import net.minecraft.util.ActionResultType;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
@@ -30,7 +31,7 @@ public class SpellSpark extends Spell{
 
     //I stole flint and steel's onItemUse event to use as a POC spell.
     @Override
-    public void onSpellCast(ItemUseContext spellContext) {
+    public ActionResultType onSpellCast(ItemUseContext spellContext) {
         PlayerEntity playerentity = spellContext.getPlayer();
         IWorld iworld = spellContext.getWorld();
         BlockPos blockpos = spellContext.getPos();
@@ -43,11 +44,17 @@ public class SpellSpark extends Spell{
             if (playerentity instanceof ServerPlayerEntity) {
                 CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayerEntity) playerentity, blockpos1, itemstack);
             }
+
+            return ActionResultType.SUCCESS;
         } else {
             BlockState blockstate = iworld.getBlockState(blockpos);
             if (isUnlitCampfire(blockstate)) {
                 iworld.playSound(playerentity, blockpos, SoundEvents.ITEM_FLINTANDSTEEL_USE, SoundCategory.BLOCKS, 1.0F, iworld.getRandom().nextFloat() * 0.4F + 0.8F);
                 iworld.setBlockState(blockpos, blockstate.with(BlockStateProperties.LIT, true), 11);
+                return ActionResultType.SUCCESS;
+
+            } else {
+                return ActionResultType.FAIL;
             }
         }
     }

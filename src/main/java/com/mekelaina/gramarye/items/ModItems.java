@@ -1,6 +1,7 @@
 package com.mekelaina.gramarye.items;
 
 import com.mekelaina.gramarye.Gramarye;
+import com.mekelaina.gramarye.Spell.Spell;
 import com.mekelaina.gramarye.client.model.armor.GramaryanArmorBoots;
 import com.mekelaina.gramarye.client.model.armor.GramaryanArmorChestpiece;
 import com.mekelaina.gramarye.client.model.armor.GramaryanArmorCirclet;
@@ -12,6 +13,8 @@ import net.minecraft.item.Items;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+
+import java.util.HashMap;
 
 public class ModItems {
 
@@ -37,4 +40,6 @@ public class ModItems {
     private static final RegistryObject<Item> GRAMARYAN_BOOTS = ITEMS.register("gramaryan_boots", ()->
             new GramaryanArmorItem(ArmorMaterial.DIAMOND, EquipmentSlotType.FEET, new GramaryanArmorBoots(),
                     new Item.Properties().maxStackSize(1).maxDamage(429).group(Gramarye.setup.itemGroup)));
+
+    public static final HashMap<Spell, RegistryObject<Item>> SPELLBOOK_REGISTRY = new HashMap<>();
 }

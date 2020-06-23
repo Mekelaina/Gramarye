@@ -2,15 +2,14 @@ package com.mekelaina.gramarye.Spell;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemUseContext;
+import net.minecraft.util.ActionResultType;
 
-public class Spell {
+public abstract class Spell {
     protected final int manaCost;
     protected final ESpellLevel spellLevel;
     protected final ESpellElement spellElement;
     protected final String localizationKey;
     protected final String registryName;
-
-
 
     public Spell(Spell.Properties properties) {
         this.manaCost = properties.manaCost;
@@ -20,7 +19,10 @@ public class Spell {
         this.spellElement = properties.spellElement;
     }
 
-    public void onSpellCast(ItemUseContext spellContext) {
+    public abstract ActionResultType onSpellCast(ItemUseContext spellContext);
+
+    public String getSpellRegistryName() {
+        return this.registryName;
     }
 
     public static class Properties {
