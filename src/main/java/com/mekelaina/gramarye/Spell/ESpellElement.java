@@ -1,5 +1,8 @@
 package com.mekelaina.gramarye.Spell;
 
+import com.mekelaina.gramarye.Gramarye;
+import net.minecraft.util.ResourceLocation;
+
 public enum ESpellElement {
     Null(-1),
     Fire(0),
@@ -34,6 +37,10 @@ public enum ESpellElement {
             case 7: return Redstone;
             default: return Null;
         }
+    }
+
+    public ResourceLocation getElementResourceLocation() {
+        return new ResourceLocation(Gramarye.MODID + ":item/book/" + this.name().toLowerCase());
     }
 
     @Override

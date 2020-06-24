@@ -1,3 +1,18 @@
 {
-  "item.gramarye.book.spark": "Book of Spark"
+  "block.gramarye.battery": "Experion Well",
+  "block.gramarye.broadcaster": "Broadcaster",
+  "block.gramarye.charger": "Charger",
+  "block.gramarye.crystalblock": "Experion Crystal Charger",
+  "block.gramarye.crystallizer": "Experion Crystallizer",
+  "block.gramarye.embuing_pillar": "Embuing Pillar",
+  "block.gramarye.embuing_table": "Embuing Table",
+  "block.gramarye.obelisk": "Experion Obelisk",
+  "block.gramarye.shrine": "Shrine",
+  "block.gramarye.spell_table": "Spell Table",
+  "block.gramarye.tesseract": "Experion Tesseract",
+  "item.gramarye.book.spark": "Book of Spark",
+  "item.gramarye.crystal": "Experion Crystal",
+  "item.gramarye.oak_staff": "Oaken Staff",
+  "item.gramarye.wand": "Wand",
+  "itemGroup.gramarye": "Gramarye"
 }

@@ -1,8 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "gramarye:item/book/loot_spellbook",
-    "layer1": "gramarye:item/book/fire",
-    "layer2": "gramarye/item/book/novice"
-  }
-}

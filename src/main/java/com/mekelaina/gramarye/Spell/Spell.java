@@ -31,7 +31,10 @@ public abstract class Spell {
     public String getSpellRegistryName() {
         return this.registryName;
     }
-    public String getSpellEnglishName() { return this.spellEnglishName; }
+
+    public String getSpellEnglishName() {
+        return this.spellEnglishName;
+    }
 
     public static class Properties {
         private int manaCost;
