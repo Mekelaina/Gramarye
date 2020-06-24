@@ -1,0 +1,17 @@
+{
+	"parent": "item/generated",
+	"textures": {
+		"layer0": "gramarye:item/book/loot_spellbook"
+	},
+	"overrides": [
+		{
+			"predicate":
+			{
+				"element": 0,
+				"level":  0
+			},
+			"model": "gramarye:item/book/spellbook_fire_novice"
+		}
+	]
+
+}
