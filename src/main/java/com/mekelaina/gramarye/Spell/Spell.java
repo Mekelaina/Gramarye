@@ -19,6 +19,14 @@ public abstract class Spell {
         this.spellElement = properties.spellElement;
     }
 
+    public ESpellLevel getSpellLevel() {
+        return spellLevel;
+    }
+
+    public ESpellElement getSpellElement() {
+        return spellElement;
+    }
+
     public abstract ActionResultType onSpellCast(ItemUseContext spellContext);
 
     public String getSpellRegistryName() {
@@ -56,5 +64,7 @@ public abstract class Spell {
             this.spellElement = spellElement;
             return this;
         }
+
+
     }
 }
