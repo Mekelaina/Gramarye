@@ -25,7 +25,7 @@ public class SpellSpark extends Spell{
                 .setManaCost(10)
                 .setSpellLevel(ESpellLevel.Level1)
                 .setSpellElement(ESpellElement.Fire)
-                .setLocalizationKey("spell.gramarye.spark")
+                .setSpellEnglishName("Spark")
                 .setRegistryName("spark"));
     }
 
