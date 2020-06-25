@@ -4,5 +4,13 @@
     "layer0": "gramarye:item/book/loot_spellbook",
     "layer1": "gramarye:item/book/fire",
     "layer2": "gramarye:item/book/novice"
-  }
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "gramarye:booktype": 1.0
+      },
+      "model": "gramarye:item/book/crafted_fire_novice"
+    }
+  ]
 }

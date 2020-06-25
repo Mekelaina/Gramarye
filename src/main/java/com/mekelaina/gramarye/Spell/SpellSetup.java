@@ -1,10 +1,9 @@
 package com.mekelaina.gramarye.Spell;
 
-import com.mekelaina.gramarye.items.GenericSpellBook;
+import com.mekelaina.gramarye.items.book.GenericSpellBook;
 import com.mekelaina.gramarye.items.ModItems;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class SpellSetup {
     //A holder for our spells so we can dynamically create Spell Book Item registrations during setup.

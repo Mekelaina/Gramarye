@@ -18,6 +18,8 @@ public abstract class Spell {
         this.spellElement = properties.spellElement;
     }
 
+    public abstract SpellCastResult onSpellCast(SpellCastContext spellContext);
+
     public ESpellLevel getSpellLevel() {
         return spellLevel;
     }
@@ -26,14 +28,16 @@ public abstract class Spell {
         return spellElement;
     }
 
-    public abstract ActionResultType onSpellCast(ItemUseContext spellContext);
-
     public String getSpellRegistryName() {
         return this.registryName;
     }
 
     public String getSpellEnglishName() {
         return this.spellEnglishName;
+    }
+
+    public int getManaCost() {
+        return this.manaCost;
     }
 
     public static class Properties {
