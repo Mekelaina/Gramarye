@@ -15,7 +15,8 @@ public class DataGenerators {
             dataGenerator.addProvider(new LootTables(dataGenerator));
         }
         if(event.includeClient()) {
-
+            dataGenerator.addProvider(new SpellBookModelProvider(dataGenerator, event.getExistingFileHelper()));
+            dataGenerator.addProvider(new SpellBookLanguageProvider(dataGenerator, "en_us"));
         }
     }
 }

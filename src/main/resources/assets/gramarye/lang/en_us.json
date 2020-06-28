@@ -18,11 +18,5 @@
   "item.gramarye.wand": "Wand",
 
   "_comment": "Creative Tabs",
-  "itemGroup.gramarye": "Gramarye",
-
-  "_comment": "Spell Names",
-  "spell.gramarye.spark": "Spark",
-
-  "_comment": "SpellBook Names",
-  "item.gramarye.book.spark": "Book of Spark"
+  "itemGroup.gramarye": "Gramarye"
 }

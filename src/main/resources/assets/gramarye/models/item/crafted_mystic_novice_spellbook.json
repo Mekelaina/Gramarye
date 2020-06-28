@@ -1,0 +1,7 @@
+{
+  "parent": "gramrye:item/crafted_template_spellbook",
+  "textures": {
+    "#sash": "gramrye:item/mystic",
+    "#buckle": "gramrye:item/novice"
+  }
+}

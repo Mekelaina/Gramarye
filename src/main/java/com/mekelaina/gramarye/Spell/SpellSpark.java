@@ -23,9 +23,9 @@ public class SpellSpark extends Spell{
     public SpellSpark() {
         super(new Spell.Properties()
                 .setManaCost(10)
-                .setSpellLevel(ESpellLevel.Level1)
+                .setSpellLevel(ESpellLevel.Novice)
                 .setSpellElement(ESpellElement.Fire)
-                .setLocalizationKey("spell.gramarye.spark")
+                .setSpellEnglishName("Spark")
                 .setRegistryName("spark"));
     }
 
