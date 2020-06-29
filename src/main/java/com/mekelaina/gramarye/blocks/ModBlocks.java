@@ -16,10 +16,10 @@ public class ModBlocks {
     }
     //Blocks
 
-    public static final DeferredRegister<Block> BLOCKS = new DeferredRegister<>(ForgeRegistries.BLOCKS, Gramarye.MODID);
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Gramarye.MODID);
 
     public static final RegistryObject<Block> CRYSTALBLOCK = BLOCKS.register("crystalblock", () ->
-            new CrystalBlock(Block.Properties.create(Material.GLASS).hardnessAndResistance(0.3f, 3.0f)
+            new CrystalBlock(Block.Properties.create(Material.GLASS).notSolid().hardnessAndResistance(0.3f, 3.0f)
             .sound(SoundType.GLASS).harvestTool(ToolType.PICKAXE).harvestLevel(0).lightValue(7)));
 
     public static final RegistryObject<Block> BROADCASTER = BLOCKS.register("broadcaster", () ->
@@ -32,19 +32,19 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> CRYSTALLIZER = BLOCKS.register("crystallizer", () ->
             new Crystallizer(Block.Properties.create(Material.IRON).hardnessAndResistance(3f).harvestLevel(1)
-                    .harvestTool(ToolType.PICKAXE).sound(SoundType.METAL)));
+                    .harvestTool(ToolType.PICKAXE).sound(SoundType.METAL).notSolid()));
 
     public static final RegistryObject<Block> OBELISK = BLOCKS.register("obelisk", () ->
             new Obelisk(Block.Properties.create(Material.ROCK).hardnessAndResistance(3f).harvestLevel(1)
-                    .harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)));
+                    .harvestTool(ToolType.PICKAXE).sound(SoundType.STONE).notSolid()));
 
     public static final RegistryObject<Block> SHRINE = BLOCKS.register("shrine", () ->
             new Shrine(Block.Properties.create(Material.ROCK).hardnessAndResistance(0.8f).harvestLevel(0)
-                    .harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)));
+                    .harvestTool(ToolType.PICKAXE).sound(SoundType.STONE).notSolid()));
 
     public static final RegistryObject<Block> EMBUINGPILLAR = BLOCKS.register("embuing_pillar", () ->
             new EmbuingPillar(Block.Properties.create(Material.ROCK).hardnessAndResistance(3f).harvestLevel(1)
-                    .harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)));
+                    .harvestTool(ToolType.PICKAXE).sound(SoundType.STONE).notSolid()));
 
     public static final RegistryObject<Block> EMBUINGTABLE = BLOCKS.register("embuing_table", () ->
             new EmbuingTable(Block.Properties.create(Material.ROCK).hardnessAndResistance(5f, 1200f).harvestLevel(0)
@@ -56,7 +56,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> TESSERACT = BLOCKS.register("tesseract", ()->
             new Tesseract(Block.Properties.create(Material.ROCK).hardnessAndResistance(3f).harvestLevel(1)
-                    .harvestTool(ToolType.PICKAXE).sound(SoundType.STONE)));
+                    .harvestTool(ToolType.PICKAXE).sound(SoundType.STONE).notSolid()));
 
     public static final RegistryObject<Block> BATTERY = BLOCKS.register("battery", ()->
             new Battery(Block.Properties.create(Material.IRON).hardnessAndResistance(3f).harvestLevel(1)

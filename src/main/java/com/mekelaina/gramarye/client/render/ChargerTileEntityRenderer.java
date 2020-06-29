@@ -1,8 +1,10 @@
 package com.mekelaina.gramarye.client.render;
 
 import com.mekelaina.gramarye.blocks.tiles.ChargerTile;
+import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.model.IBakedModel;
 import net.minecraft.client.renderer.model.ItemCameraTransforms;
@@ -17,16 +19,16 @@ import org.lwjgl.opengl.GL11;
 
 public class ChargerTileEntityRenderer extends TileEntityRenderer<ChargerTile> {
 
-    public ChargerTileEntityRenderer() {
-
+    public ChargerTileEntityRenderer(TileEntityRendererDispatcher rendererDispatcherIn) {
+        super(rendererDispatcherIn);
     }
 
     @Override
-    public void render(ChargerTile tileEntityIn, double x, double y, double z, float partialTicks, int destroyStage) {
+    public void render(ChargerTile tileEntityIn, float partialTicks, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int combinedLightIn, int combinedOverlayIn) {
 
     }
 
-    /*    @Override
+   /*    @Override
     public void render(ChargerTile tileEntityIn, double x, double y, double z, float partialTicks, int destroyStage) {
 
         ItemStack stack = new ItemStack(Items.DIAMOND);

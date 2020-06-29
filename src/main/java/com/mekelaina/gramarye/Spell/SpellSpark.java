@@ -15,8 +15,7 @@ import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 
-import static net.minecraft.item.FlintAndSteelItem.func_219996_a;
-import static net.minecraft.item.FlintAndSteelItem.isUnlitCampfire;
+import static net.minecraft.item.FlintAndSteelItem.*;
 
 public class SpellSpark extends Spell{
 
@@ -36,7 +35,7 @@ public class SpellSpark extends Spell{
         IWorld iworld = spellContext.getWorld();
         BlockPos blockpos = spellContext.getPos();
         BlockPos blockpos1 = blockpos.offset(spellContext.getFace());
-        if (func_219996_a(iworld.getBlockState(blockpos1), iworld, blockpos1)) {
+        if (canSetFire(iworld.getBlockState(blockpos1), iworld, blockpos1)) {
             iworld.playSound(playerentity, blockpos1, SoundEvents.ITEM_FLINTANDSTEEL_USE, SoundCategory.BLOCKS, 1.0F, iworld.getRandom().nextFloat() * 0.4F + 0.8F);
             BlockState blockstate1 = ((FireBlock) Blocks.FIRE).getStateForPlacement(iworld, blockpos1);
             iworld.setBlockState(blockpos1, blockstate1, 11);

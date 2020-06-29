@@ -10,7 +10,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class ModTileEntities {
 
-    public static final DeferredRegister<TileEntityType<?>> TILE_ENTITIES = new DeferredRegister<>(ForgeRegistries.TILE_ENTITIES, Gramarye.MODID);
+    public static final DeferredRegister<TileEntityType<?>> TILE_ENTITIES = DeferredRegister.create(ForgeRegistries.TILE_ENTITIES, Gramarye.MODID);
 
     public static final RegistryObject<TileEntityType<ObeliskTile>> OBELISK_TILE = TILE_ENTITIES.register("obelisk", ()->
             TileEntityType.Builder.create(ObeliskTile::new, ModBlocks.OBELISK.get()).build(null));

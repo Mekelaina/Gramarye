@@ -2,14 +2,7 @@ package com.mekelaina.gramarye.items;
 
 import com.mekelaina.gramarye.Gramarye;
 import com.mekelaina.gramarye.Spell.Spell;
-import com.mekelaina.gramarye.client.model.armor.GramaryanArmorBoots;
-import com.mekelaina.gramarye.client.model.armor.GramaryanArmorChestpiece;
-import com.mekelaina.gramarye.client.model.armor.GramaryanArmorCirclet;
-import com.mekelaina.gramarye.client.model.armor.GramaryanArmorLeggings;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.Item;
-import net.minecraft.item.Items;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -18,7 +11,7 @@ import java.util.HashMap;
 
 public class ModItems {
 
-    public static final DeferredRegister<Item> ITEMS = new DeferredRegister<>(ForgeRegistries.ITEMS, Gramarye.MODID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Gramarye.MODID);
 
     public static final RegistryObject<Item> WAND = ITEMS.register("wand", ()->
             new Wand(new Item.Properties().maxStackSize(1).group(Gramarye.setup.itemGroup)));
@@ -28,7 +21,7 @@ public class ModItems {
             new Crystal(new Item.Properties().maxStackSize(64).group(Gramarye.setup.itemGroup)));
     public static final RegistryObject<Item> DEBUG = ITEMS.register("debug", ()->
             new DebugItem(new Item.Properties().maxStackSize(1).group(Gramarye.setup.itemGroup)));
-    private static final RegistryObject<Item> GRAMARYAN_CIRCLET = ITEMS.register("gramaryan_circlet", ()->
+    /*private static final RegistryObject<Item> GRAMARYAN_CIRCLET = ITEMS.register("gramaryan_circlet", ()->
             new GramaryanArmorItem(ArmorMaterial.DIAMOND, EquipmentSlotType.HEAD, new GramaryanArmorCirclet(),
                     new Item.Properties().maxStackSize(1).maxDamage(363).group(Gramarye.setup.itemGroup)));
     private static final RegistryObject<Item> GRAMARYAN_CHESTPIECE = ITEMS.register("gramaryan_chestpiece", ()->
@@ -39,7 +32,7 @@ public class ModItems {
                     new Item.Properties().maxStackSize(1).maxDamage(495).group(Gramarye.setup.itemGroup)));
     private static final RegistryObject<Item> GRAMARYAN_BOOTS = ITEMS.register("gramaryan_boots", ()->
             new GramaryanArmorItem(ArmorMaterial.DIAMOND, EquipmentSlotType.FEET, new GramaryanArmorBoots(),
-                    new Item.Properties().maxStackSize(1).maxDamage(429).group(Gramarye.setup.itemGroup)));
+                    new Item.Properties().maxStackSize(1).maxDamage(429).group(Gramarye.setup.itemGroup)));*/
 
     public static final HashMap<Spell, RegistryObject<Item>> SPELLBOOK_REGISTRY = new HashMap<>();
 }

@@ -1,12 +1,12 @@
 package com.mekelaina.gramarye.blocks;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.IBooleanFunction;
@@ -34,8 +34,8 @@ public class Broadcaster extends Block
     }
 
     @Override
-    public BlockRenderLayer getRenderLayer() {
-        return BlockRenderLayer.SOLID;
+    public BlockRenderType getRenderType(BlockState state) {
+        return BlockRenderType.MODEL;
     }
 
     @Override
@@ -45,8 +45,8 @@ public class Broadcaster extends Block
 
     public static Direction getFacingFromEntity(BlockPos clickedBlock, LivingEntity placer) {
 
-        return Direction.getFacingFromVector((float)(placer.posX - clickedBlock.getX()), 0f/*(float)(placer.posY - clickedBlock.getY())*/,
-                (float)(placer.posZ - clickedBlock.getZ()));
+        return Direction.getFacingFromVector((float)(placer.getPosX() - clickedBlock.getX()), 0f,
+                (float)(placer.getPosZ() - clickedBlock.getZ()));
     }
 
     @Override
