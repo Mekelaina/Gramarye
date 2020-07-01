@@ -1,0 +1,8 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "gramarye:item/book/crafted_spellbook",
+    "layer1": "gramarye:item/book/air",
+    "layer2": "gramarye:item/book/expert"
+  }
+}

@@ -30,7 +30,7 @@ public class SpellSpark extends Spell{
 
     //I stole flint and steel's onItemUse event to use as a POC spell.
     @Override
-    public ActionResultType onSpellCast(ItemUseContext spellContext) {
+    public SpellCastResult onSpellCast(SpellCastContext spellContext) {
         PlayerEntity playerentity = spellContext.getPlayer();
         IWorld iworld = spellContext.getWorld();
         BlockPos blockpos = spellContext.getPos();
@@ -44,16 +44,16 @@ public class SpellSpark extends Spell{
                 CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayerEntity) playerentity, blockpos1, itemstack);
             }
 
-            return ActionResultType.SUCCESS;
+            return new SpellCastResult(ActionResultType.SUCCESS);
         } else {
             BlockState blockstate = iworld.getBlockState(blockpos);
             if (isUnlitCampfire(blockstate)) {
                 iworld.playSound(playerentity, blockpos, SoundEvents.ITEM_FLINTANDSTEEL_USE, SoundCategory.BLOCKS, 1.0F, iworld.getRandom().nextFloat() * 0.4F + 0.8F);
                 iworld.setBlockState(blockpos, blockstate.with(BlockStateProperties.LIT, true), 11);
-                return ActionResultType.SUCCESS;
+                return new SpellCastResult(ActionResultType.SUCCESS);
 
             } else {
-                return ActionResultType.FAIL;
+                return new SpellCastResult(ActionResultType.FAIL);
             }
         }
     }

@@ -1,5 +1,8 @@
 package com.mekelaina.gramarye.Spell;
 
+import com.mekelaina.gramarye.Gramarye;
+import net.minecraft.util.ResourceLocation;
+
 public enum ESpellLevel {
     Novice(0),
     Apprentice(1),
@@ -15,6 +18,10 @@ public enum ESpellLevel {
 
     public float getValue() {
         return value;
+    }
+
+    public ResourceLocation getLevelResourceLocation() {
+        return new ResourceLocation(Gramarye.MODID + ":item/book/" + this.name().toLowerCase());
     }
 
     @Override
