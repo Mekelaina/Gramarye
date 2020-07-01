@@ -38,6 +38,7 @@ public class SpellCastContext {
 
     public boolean getInside() {
         return this.parentContext.isInside();
+ master
     }
 
     public ItemStack getItem() {
