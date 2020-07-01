@@ -1,12 +1,13 @@
 package com.mekelaina.gramarye.blocks;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.util.BlockRenderLayer;
+
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
@@ -24,25 +25,31 @@ public class Battery extends Block {
         super(properties);
     }
 
+
+
     @Override
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         return bounds;
     }
 
     @Override
-    public BlockRenderLayer getRenderLayer() {
-        return BlockRenderLayer.TRANSLUCENT;
+    public BlockRenderType getRenderType(BlockState state) {
+        return BlockRenderType.MODEL;
     }
 
-    @Override
+    /*@Override
+        public BlockRenderLayer getRenderLayer() {
+            return BlockRenderLayer.TRANSLUCENT;
+        }
+    */    @Override
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(BlockStateProperties.FACING);
     }
 
     public static Direction getFacingFromEntity(BlockPos clickedBlock, LivingEntity placer) {
 
-        return Direction.getFacingFromVector((float)(placer.posX - clickedBlock.getX()), (float)(placer.posY - clickedBlock.getY()),
-                (float)(placer.posZ - clickedBlock.getZ()));
+        return Direction.getFacingFromVector((float)(placer.getPosX() - clickedBlock.getX()), (float)(placer.getPosY() - clickedBlock.getY()),
+                (float)(placer.getPosZ() - clickedBlock.getZ()));
     }
 
     @Override

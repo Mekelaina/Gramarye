@@ -19,7 +19,7 @@ import net.minecraftforge.fml.common.registry.*;
 @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
 public class ModEntities {
 
-    public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = new DeferredRegister<>(ForgeRegistries.ENTITIES, Gramarye.MODID);
+    public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITIES, Gramarye.MODID);
 
     public static final RegistryObject<EntityType<SpellBoltEntity>> SPELLBOLT = ENTITY_TYPES.register("spellbolt", () ->
             EntityType.Builder.<SpellBoltEntity>create(SpellBoltEntity::new, EntityClassification.MISC)

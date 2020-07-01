@@ -74,7 +74,7 @@ public abstract class AbstractBoltEntity extends DamagingProjectileEntity implem
      * Called to update the entity's position/logic.
      */
     public void tick() {
-        if (this.world.isRemote || (this.shootingEntity == null || !this.shootingEntity.removed) && this.world.isBlockLoaded(new BlockPos(this))) {
+       /* if (this.world.isRemote || (this.shootingEntity == null || !this.shootingEntity.removed) && this.world.isBlockLoaded(new BlockPos(this))) {
             super.tick();
 
             ++this.ticksInAir;
@@ -103,7 +103,7 @@ public abstract class AbstractBoltEntity extends DamagingProjectileEntity implem
             this.setPosition(this.posX, this.posY, this.posZ);
         } else {
             this.remove();
-        }
+        }*/
     }
 
 
@@ -201,8 +201,8 @@ public abstract class AbstractBoltEntity extends DamagingProjectileEntity implem
         return 15728880;
     }
 
-    public IPacket<?> createSpawnPacket() {
+   /* public IPacket<?> createSpawnPacket() {
         int i = this.shootingEntity == null ? 0 : this.shootingEntity.getEntityId();
         return new SSpawnObjectPacket(this.getEntityId(), this.getUniqueID(), this.posX, this.posY, this.posZ, this.rotationPitch, this.rotationYaw, this.getType(), i, new Vec3d(this.accelerationX, this.accelerationY, this.accelerationZ));
-    }
+    }*/
 }

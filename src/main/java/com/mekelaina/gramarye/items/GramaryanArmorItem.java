@@ -1,19 +1,13 @@
 package com.mekelaina.gramarye.items;
 
-import com.mekelaina.gramarye.client.model.armor.GramaryanArmorBase;
-import net.minecraft.client.renderer.entity.model.BipedModel;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.IArmorMaterial;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.Item;
 
-import javax.annotation.Nullable;
+public class GramaryanArmorItem extends Item {
+    public GramaryanArmorItem(Properties properties) {
+        super(properties);
+    }
 
-public class GramaryanArmorItem extends ArmorItem {
-
-    private GramaryanArmorBase armorModel;
+    /* private GramaryanArmorBase armorModel;
 
     public GramaryanArmorItem(IArmorMaterial materialIn, EquipmentSlotType slot, GramaryanArmorBase armorModel, Properties builder) {
         super(materialIn, slot, builder);
@@ -31,5 +25,5 @@ public class GramaryanArmorItem extends ArmorItem {
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity, EquipmentSlotType slot, String type) {
         return armorModel.getTexture();
-    }
+    }*/
 }

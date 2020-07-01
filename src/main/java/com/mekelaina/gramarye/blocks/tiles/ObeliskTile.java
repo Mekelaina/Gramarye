@@ -43,7 +43,7 @@ public class ObeliskTile extends TileEntity implements ITickableTileEntity, INam
     private double translation = 0;
     private double lastTranslation = 0;
 
-    private Random random = new Random();
+
 
     public ObeliskTile() {
         super(ModTileEntities.OBELISK_TILE.get());

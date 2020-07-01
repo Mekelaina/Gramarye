@@ -10,7 +10,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class ModContainers {
 
-    public static final DeferredRegister<ContainerType<?>> CONTAINERS = new DeferredRegister<>(ForgeRegistries.CONTAINERS, Gramarye.MODID);
+    public static final DeferredRegister<ContainerType<?>> CONTAINERS = DeferredRegister.create(ForgeRegistries.CONTAINERS, Gramarye.MODID);
 
     public static final RegistryObject<ContainerType<ObeliskContainer>> OBELISK_CONTAINER = CONTAINERS.register("obelisk", () ->
     IForgeContainerType.create((((windowId, inv, data) -> {

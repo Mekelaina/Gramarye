@@ -36,8 +36,9 @@ public class SpellCastContext {
         return this.parentContext.getHitVec();
     }
 
-    public boolean func_221533_k() {
-        return this.parentContext.func_221533_k();
+    public boolean getInside() {
+        return this.parentContext.isInside();
+ master
     }
 
     public ItemStack getItem() {

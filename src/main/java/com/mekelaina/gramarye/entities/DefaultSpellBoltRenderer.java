@@ -17,21 +17,21 @@ public class DefaultSpellBoltRenderer extends EntityRenderer<SpellBoltEntity> im
 
     public DefaultSpellBoltRenderer(EntityRendererManager renderManager) {
         super(renderManager);
-        bindTexture(TEXTURE);
+
     }
 
     @Nullable
     @Override
-    protected ResourceLocation getEntityTexture(SpellBoltEntity entity) {
+    public ResourceLocation getEntityTexture(SpellBoltEntity entity) {
         return TEXTURE;
     }
 
-    @Override
+    /*@Override
     public void doRender(SpellBoltEntity entity, double x, double y, double z, float entityYaw, float partialTicks) {
         super.doRender(entity, x, y, z, entityYaw, partialTicks);
         renderManager.renderEntity(entity, x, y, z, entityYaw, partialTicks, false);
        // MODEL.render(entity, 0f, 0f, 0f, entityYaw, e);
-    }
+    }*/
 
     @Override
     public EntityRenderer createRenderFor(EntityRendererManager manager) {
