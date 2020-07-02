@@ -1,4 +1,4 @@
-package com.mekelaina.gramarye.Spell;
+package com.mekelaina.gramarye.spell;
 
 import com.mekelaina.gramarye.Gramarye;
 import net.minecraft.util.ResourceLocation;

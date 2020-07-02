@@ -1,8 +1,6 @@
-package com.mekelaina.gramarye.Spell;
+package com.mekelaina.gramarye.spell;
 
 import net.minecraft.util.ActionResultType;
-
-import javax.annotation.Nullable;
 
 public class SpellCastResult {
     public final ActionResultType spellResult;

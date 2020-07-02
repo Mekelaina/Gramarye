@@ -1,4 +1,4 @@
-package com.mekelaina.gramarye.Spell;
+package com.mekelaina.gramarye.spell;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -18,10 +18,12 @@ import javax.annotation.Nullable;
 public class SpellCastContext {
     protected final ItemUseContext parentContext;
     protected final int availableMana;
+    protected boolean insufficientMana;
 
-    public SpellCastContext(ItemUseContext context, int availableMana) {
+    public SpellCastContext(ItemUseContext context, int availableMana, boolean insufficientMana) {
         this.parentContext = context;
         this.availableMana = availableMana;
+        this.insufficientMana = insufficientMana;
     }
 
     public BlockPos getPos() {
@@ -38,7 +40,6 @@ public class SpellCastContext {
 
     public boolean getInside() {
         return this.parentContext.isInside();
- master
     }
 
     public ItemStack getItem() {
@@ -71,5 +72,13 @@ public class SpellCastContext {
     public float getPlacementYaw() {
         PlayerEntity player = this.getPlayer();
         return player == null ? 0.0F : player.rotationYaw;
+    }
+
+    public int getAvailableMana() {
+        return this.availableMana;
+    }
+
+    public boolean notEnoughManaToCast() {
+        return this.insufficientMana;
     }
 }

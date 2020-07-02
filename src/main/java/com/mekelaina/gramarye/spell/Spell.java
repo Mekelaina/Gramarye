@@ -1,7 +1,4 @@
-package com.mekelaina.gramarye.Spell;
-
-import net.minecraft.item.ItemUseContext;
-import net.minecraft.util.ActionResultType;
+package com.mekelaina.gramarye.spell;
 
 public abstract class Spell {
     protected final int manaCost;

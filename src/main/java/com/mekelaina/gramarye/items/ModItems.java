@@ -1,7 +1,7 @@
 package com.mekelaina.gramarye.items;
 
 import com.mekelaina.gramarye.Gramarye;
-import com.mekelaina.gramarye.Spell.Spell;
+import com.mekelaina.gramarye.spell.Spell;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
