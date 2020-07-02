@@ -1,8 +1,8 @@
 package com.mekelaina.gramarye.items;
 
-import com.mekelaina.gramarye.Spell.ESpellElement;
-import com.mekelaina.gramarye.Spell.ESpellLevel;
-import com.mekelaina.gramarye.Spell.Spell;
+import com.mekelaina.gramarye.spell.ESpellElement;
+import com.mekelaina.gramarye.spell.ESpellLevel;
+import com.mekelaina.gramarye.spell.Spell;
 import net.minecraft.item.Item;
 
 public class DebugItem extends Item {

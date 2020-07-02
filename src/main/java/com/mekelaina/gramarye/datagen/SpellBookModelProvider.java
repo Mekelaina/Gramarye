@@ -1,19 +1,16 @@
 package com.mekelaina.gramarye.datagen;
 
 import com.mekelaina.gramarye.Gramarye;
-import com.mekelaina.gramarye.Spell.ESpellElement;
-import com.mekelaina.gramarye.Spell.ESpellLevel;
-import com.mekelaina.gramarye.Spell.Spell;
-import com.mekelaina.gramarye.Spell.SpellSetup;
+import com.mekelaina.gramarye.spell.ESpellElement;
+import com.mekelaina.gramarye.spell.ESpellLevel;
+import com.mekelaina.gramarye.spell.Spell;
+import com.mekelaina.gramarye.spell.SpellSetup;
+import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.generators.ExistingFileHelper;
-import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.client.model.generators.ModelFile.UncheckedModelFile;
 import net.minecraftforge.client.model.generators.ModelProvider;
-
-import java.util.function.BiFunction;
-import java.util.function.Function;
 
 public class SpellBookModelProvider extends ModelProvider<SpellBookModelBuilder> {
     public SpellBookModelProvider(DataGenerator generator, ExistingFileHelper existingFileHelper) {

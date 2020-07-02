@@ -2,7 +2,8 @@ package com.mekelaina.gramarye.setup;
 
 
 import com.mekelaina.gramarye.Gramarye;
-import com.mekelaina.gramarye.Spell.SpellSetup;
+import com.mekelaina.gramarye.capabilities.CapabilityExperia;
+import com.mekelaina.gramarye.spell.SpellSetup;
 import com.mekelaina.gramarye.blocks.ModBlocks;
 import com.mekelaina.gramarye.blocks.containers.ModContainers;
 import com.mekelaina.gramarye.blocks.tiles.ModTileEntities;
@@ -15,6 +16,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 
 @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
@@ -42,5 +44,10 @@ public class Registration {
                     registry.register(blockItem);
                 });
         Gramarye.LOGGER.debug("Registered BlockItems");
+    }
+
+    @SubscribeEvent
+    public static void onCommonSetupEvent(FMLCommonSetupEvent event) {
+        CapabilityExperia.register();
     }
 }

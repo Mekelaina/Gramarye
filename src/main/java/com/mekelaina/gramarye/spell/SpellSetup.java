@@ -1,4 +1,4 @@
-package com.mekelaina.gramarye.Spell;
+package com.mekelaina.gramarye.spell;
 
 import com.mekelaina.gramarye.items.book.GenericSpellBook;
 import com.mekelaina.gramarye.items.ModItems;

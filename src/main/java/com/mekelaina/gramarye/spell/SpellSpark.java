@@ -1,4 +1,4 @@
-package com.mekelaina.gramarye.Spell;
+package com.mekelaina.gramarye.spell;
 
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.block.BlockState;
@@ -7,7 +7,6 @@ import net.minecraft.block.FireBlock;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUseContext;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.SoundCategory;
