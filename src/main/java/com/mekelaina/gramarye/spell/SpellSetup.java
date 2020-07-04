@@ -35,5 +35,6 @@ public class SpellSetup {
     //Any new spell should be placed below.
     private static void registerAllSpells() {
         registerSpell(new SpellSpark());
+        registerSpell(new SpellManaBullet());
     }
 }

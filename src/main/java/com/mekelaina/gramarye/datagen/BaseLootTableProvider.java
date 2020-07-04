@@ -45,8 +45,8 @@ public abstract class BaseLootTableProvider extends LootTableProvider {
                         .acceptFunction(CopyNbt.builder(CopyNbt.Source.BLOCK_ENTITY)
                                 .addOperation("inv", "BlockEntityTag.inv", CopyNbt.Action.REPLACE)
                                 .addOperation("experion", "BlockEntityTag.experion", CopyNbt.Action.REPLACE))
-                        .acceptFunction(SetContents.func_215920_b()
-                                .func_216075_a(DynamicLootEntry.func_216162_a(new ResourceLocation("minecraft", "contents"))))
+                        .acceptFunction(SetContents.builder()
+                                .addLootEntry(DynamicLootEntry.func_216162_a(new ResourceLocation("minecraft", "contents"))))
                 );
         return LootTable.builder().addLootPool(builder);
     }
@@ -59,8 +59,8 @@ public abstract class BaseLootTableProvider extends LootTableProvider {
                         .acceptFunction(CopyName.builder(CopyName.Source.BLOCK_ENTITY))
                         .acceptFunction(CopyNbt.builder(CopyNbt.Source.BLOCK_ENTITY)
                                 .addOperation("experion", "BlockEntityTag.experion", CopyNbt.Action.REPLACE))
-                        .acceptFunction(SetContents.func_215920_b()
-                                .func_216075_a(DynamicLootEntry.func_216162_a(new ResourceLocation("minecraft", "contents"))))
+                        .acceptFunction(SetContents.builder()
+                                .addLootEntry(DynamicLootEntry.func_216162_a(new ResourceLocation("minecraft", "contents"))))
                 );
         return LootTable.builder().addLootPool(builder);
     }
