@@ -2,9 +2,10 @@ package com.mekelaina.gramarye.blocks.tiles;
 
 import com.mekelaina.gramarye.Gramarye;
 import com.mekelaina.gramarye.blocks.ModBlocks;
-import com.mekelaina.gramarye.blocks.containers.ObeliskContainer;
+import com.mekelaina.gramarye.gui.containers.ObeliskContainer;
 import com.mekelaina.gramarye.items.ModItems;
 import com.mekelaina.gramarye.util.CustomEnergyStorage;
+import com.mekelaina.gramarye.util.XPMathUtils;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
@@ -28,13 +29,16 @@ import net.minecraftforge.items.ItemStackHandler;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class ObeliskTile extends TileEntity implements ITickableTileEntity, INamedContainerProvider {
 
     private LazyOptional<IItemHandler> handler = LazyOptional.of(this::createHandler);
     private LazyOptional<IEnergyStorage> energy = LazyOptional.of(this::createEnergy);
+
+    private ArrayList<InputWrapper> toProcess = new ArrayList<>();
 
     private int counter;
     private int inputType=0;
@@ -77,6 +81,24 @@ public class ObeliskTile extends TileEntity implements ITickableTileEntity, INam
             });
         }
 
+        /*for (InputWrapper i : toProcess) {
+            Gramarye.LOGGER.debug("DOOOOOOOOO");
+            if(i.isAdd()){
+                energy.ifPresent(iEnergyStorage -> {
+                    ((CustomEnergyStorage)iEnergyStorage).addEnergy(XPMathUtils.getXpToInsert(iEnergyStorage.getEnergyStored(),
+                            iEnergyStorage.getMaxEnergyStored(), i.getAmount()));
+                });
+            } else {
+                energy.ifPresent(iEnergyStorage -> {
+                    ((CustomEnergyStorage)iEnergyStorage).consumeEnergy(XPMathUtils.getXpToInsert(iEnergyStorage.getEnergyStored(),
+                            iEnergyStorage.getMaxEnergyStored(), i.getAmount()));
+                });
+            }
+            //toProcess.remove(i);
+            markDirty();
+        }
+
+        toProcess.clear();*/
 
         sendOutPower();
 
@@ -209,6 +231,41 @@ public class ObeliskTile extends TileEntity implements ITickableTileEntity, INam
 
     }
 
+    public boolean insertXp(int amount) {
+        AtomicBoolean rtn = new AtomicBoolean(false);
+        energy.ifPresent(iEnergyStorage -> {
+            int temp = XPMathUtils.getXpToInsert(iEnergyStorage.getEnergyStored(),
+                    iEnergyStorage.getMaxEnergyStored(), amount);
+            ((CustomEnergyStorage)iEnergyStorage).addEnergy(temp);
+            rtn.set(true);
+            markDirty();
+        });
+        //markDirty();
+        return rtn.get();
+
+        /*toProcess.add(new InputWrapper(amount, true));
+        return true;*/
+    }
+
+    public boolean removeXp(int amount) {
+        AtomicBoolean rtn = new AtomicBoolean(false);
+        energy.ifPresent(iEnergyStorage -> {
+            Gramarye.LOGGER.debug("remove bii");
+            int temp = XPMathUtils.getXpToRemove(iEnergyStorage.getEnergyStored(),
+                    iEnergyStorage.getMaxEnergyStored(), amount);
+            Gramarye.LOGGER.debug(amount);
+            ((CustomEnergyStorage)iEnergyStorage).consumeEnergy(temp);
+            //Gramarye.LOGGER.debug(iEnergyStorage.getEnergyStored());
+            rtn.set(true);
+            markDirty();
+        });
+
+        return rtn.get();
+
+        /*toProcess.add(new InputWrapper(amount, false));
+        return true;*/
+    }
+
     private void calculateTranslation() {
         this.lastTranslation = this.translation;
         this.translation += (float)(Math.sin(speed * counter));
@@ -223,6 +280,14 @@ public class ObeliskTile extends TileEntity implements ITickableTileEntity, INam
          energy.ifPresent(e -> {
              temp.set(e.getMaxEnergyStored());});
          return temp.get();
+    }
+
+    public int getEnergy() {
+        AtomicInteger temp = new AtomicInteger();
+        energy.ifPresent(e -> {
+            temp.set(e.getEnergyStored());
+        });
+        return temp.get();
     }
 
     private boolean isItemValid(ItemStack stack) {
@@ -241,5 +306,23 @@ public class ObeliskTile extends TileEntity implements ITickableTileEntity, INam
             return true;
         }
         return false;
+    }
+}
+
+class InputWrapper {
+    private int amount;
+    private boolean add;
+
+    public InputWrapper(int amount, boolean add) {
+        this.amount = amount;
+        this.add = add;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public boolean isAdd() {
+        return add;
     }
 }

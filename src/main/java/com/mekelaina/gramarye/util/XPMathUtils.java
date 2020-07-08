@@ -63,4 +63,43 @@ public class XPMathUtils {
         nextLevel = totalXpByLevel(nextLevel);
         return  nextLevel - xp;
     }
+
+    /**
+     * checks if the amount of xp to insert is first greater than the capacity or would make the current
+     * greater than the capacity, if so, it returns the amount needed to put the current at the capacity.
+     * if its smaller than the capacity and it plus the current is less than the capacity, it returns the
+     * original xpToInsert
+     * @param currentXp
+     * @param xpCapacity
+     * @param xpToInsert
+     * @return
+     */
+    public static int getXpToInsert(int currentXp, int xpCapacity, int xpToInsert) {
+        if(xpToInsert > xpCapacity || (xpToInsert + currentXp) > xpCapacity) {
+            return  xpCapacity - currentXp;
+        }else {
+           return xpToInsert;
+        }
+    }
+
+    public static int getXpToRemove(int currentXp, int xpCapacity, int xpToRemove) {
+        if(xpToRemove >= currentXp){
+            return currentXp;
+        } else {
+            return xpToRemove;
+        }
+    }
+
+    /**
+     * returns the difference in total xp between level A and level B
+     * a - b
+     * @param lvlA
+     * @param lvlB
+     * @return
+     */
+    public static int getXpDifferenceBetweenLevel(int lvlA, int lvlB) {
+        return totalXpByLevel(lvlA) - totalXpByLevel(lvlB);
+    }
+
+
 }

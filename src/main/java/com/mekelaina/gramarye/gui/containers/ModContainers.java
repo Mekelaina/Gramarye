@@ -1,4 +1,4 @@
-package com.mekelaina.gramarye.blocks.containers;
+package com.mekelaina.gramarye.gui.containers;
 
 import com.mekelaina.gramarye.Gramarye;
 import net.minecraft.inventory.container.ContainerType;

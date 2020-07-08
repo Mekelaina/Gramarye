@@ -3,6 +3,7 @@ package com.mekelaina.gramarye.setup;
 import com.mekelaina.gramarye.Gramarye;
 import com.mekelaina.gramarye.blocks.ModBlocks;
 import com.mekelaina.gramarye.items.ModItems;
+import com.mekelaina.gramarye.network.Networking;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -21,5 +22,6 @@ public class ModSetup {
 
     public static void init(final FMLCommonSetupEvent event){
        // ModBlocks.BLOCKS.register();
+        Networking.registerMessages();
     }
 }
