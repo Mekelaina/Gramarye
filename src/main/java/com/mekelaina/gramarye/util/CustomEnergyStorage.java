@@ -1,5 +1,6 @@
 package com.mekelaina.gramarye.util;
 
+import com.mekelaina.gramarye.Gramarye;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.energy.EnergyStorage;
@@ -21,10 +22,11 @@ public class CustomEnergyStorage extends EnergyStorage implements INBTSerializab
         }
     }
 
-    public void consumeEnergy(int energy)
+    public void consumeEnergy(int energy1)
     {
-        this.energy -= energy;
-        if(this.energy < 0){
+        Gramarye.LOGGER.debug("consume: " + energy1);
+        this.energy -= energy1;
+        if(this.energy <= 0){
             this.energy = 0;
         }
     }

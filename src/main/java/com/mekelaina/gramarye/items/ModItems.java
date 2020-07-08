@@ -13,6 +13,7 @@ public class ModItems {
 
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Gramarye.MODID);
 
+
     public static final RegistryObject<Item> WAND = ITEMS.register("wand", ()->
             new Wand(new Item.Properties().maxStackSize(1).group(Gramarye.setup.itemGroup)));
     public static final RegistryObject<Item> STAFF = ITEMS.register("oak_staff", () ->
