@@ -3,6 +3,7 @@ package com.mekelaina.gramarye.setup;
 import com.mekelaina.gramarye.Gramarye;
 import com.mekelaina.gramarye.blocks.ModBlocks;
 import com.mekelaina.gramarye.gui.containers.ModContainers;
+import com.mekelaina.gramarye.gui.screens.ChargerScreen;
 import com.mekelaina.gramarye.gui.screens.ObeliskScreen;
 import com.mekelaina.gramarye.blocks.tiles.ModTileEntities;
 import com.mekelaina.gramarye.client.render.ChargerTileEntityRenderer;
@@ -22,6 +23,7 @@ public class ClientSetup {
 
     public static void init(final FMLClientSetupEvent event) {
         ScreenManager.registerFactory(ModContainers.OBELISK_CONTAINER.get(), ObeliskScreen::new);
+        ScreenManager.registerFactory(ModContainers.CHARGER_CONTAINER.get(), ChargerScreen::new);
 
         //RenderingRegistry.registerEntityRenderingHandler(SpellBoltEntity.class, DefaultSpellBoltRenderer::new);
 

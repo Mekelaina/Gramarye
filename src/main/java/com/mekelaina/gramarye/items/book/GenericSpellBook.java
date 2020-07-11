@@ -61,6 +61,8 @@ public class GenericSpellBook extends AbstractSpellCaster {
         return new CapabilityProviderExperia(MAX_MANA);
     }
 
+
+
     @Override
     @ParametersAreNonnullByDefault
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {

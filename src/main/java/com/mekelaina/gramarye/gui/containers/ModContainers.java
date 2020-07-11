@@ -17,4 +17,10 @@ public class ModContainers {
         BlockPos pos = data.readBlockPos();
         return new ObeliskContainer(windowId, Gramarye.proxy.getClientWorld(), pos, inv, Gramarye.proxy.getPlayerEntity());
     }))));
+
+    public static final RegistryObject<ContainerType<ChargerContainer>> CHARGER_CONTAINER = CONTAINERS.register("charger", () ->
+            IForgeContainerType.create((((windowId, inv, data) -> {
+                BlockPos pos = data.readBlockPos();
+                return new ChargerContainer(windowId, Gramarye.proxy.getClientWorld(), pos, inv, Gramarye.proxy.getPlayerEntity());
+            }))));
 }
