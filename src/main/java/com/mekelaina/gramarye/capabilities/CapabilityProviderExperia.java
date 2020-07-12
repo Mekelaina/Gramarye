@@ -16,11 +16,15 @@ public class CapabilityProviderExperia implements ICapabilitySerializable<INBT> 
     private Experia experia;
 
     public CapabilityProviderExperia() {
-        this(0);
+        this(0, false);
     }
 
-    public CapabilityProviderExperia(int startingMana) {
-        experia = new Experia(startingMana);
+    public CapabilityProviderExperia(int startingMana, boolean fill) {
+        experia = new Experia(startingMana, fill);
+    }
+
+    public CapabilityProviderExperia(Experia experia1){
+        experia = experia1;
     }
 
     @Nonnull

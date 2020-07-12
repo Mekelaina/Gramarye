@@ -24,7 +24,7 @@ public class CustomEnergyStorage extends EnergyStorage implements INBTSerializab
 
     public void consumeEnergy(int energy1)
     {
-        Gramarye.LOGGER.debug("consume: " + energy1);
+        //Gramarye.LOGGER.debug("consume: " + energy1);
         this.energy -= energy1;
         if(this.energy <= 0){
             this.energy = 0;

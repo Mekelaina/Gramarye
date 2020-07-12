@@ -62,5 +62,8 @@ public class ModBlocks {
             new Battery(Block.Properties.create(Material.IRON).hardnessAndResistance(3f).harvestLevel(1)
             .harvestTool(ToolType.PICKAXE).sound(SoundType.METAL)));
 
+    public static final RegistryObject<Block> VOIDBLOCK = BLOCKS.register("voidblock", ()->
+            new Block(Block.Properties.create(Material.BARRIER).hardnessAndResistance(-1.0F, 3600000.0F).noDrops()));
+
 
 }

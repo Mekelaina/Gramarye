@@ -52,6 +52,11 @@ public class Charger extends Block {
     }
 
     @Override
+    public boolean hasComparatorInputOverride(BlockState state) {
+        return true;
+    }
+
+    @Override
     public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
         TileEntity tile = worldIn.getTileEntity(pos);
         if(!worldIn.isRemote) {

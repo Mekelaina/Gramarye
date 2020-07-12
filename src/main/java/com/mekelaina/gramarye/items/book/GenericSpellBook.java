@@ -58,7 +58,7 @@ public class GenericSpellBook extends AbstractSpellCaster {
     @Nullable
     @Override
     public ICapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundNBT nbt) {
-        return new CapabilityProviderExperia(MAX_MANA);
+        return new CapabilityProviderExperia(MAX_MANA, true);
     }
 
 

@@ -2,6 +2,7 @@ package com.mekelaina.gramarye.network;
 
 import com.mekelaina.gramarye.blocks.Obelisk;
 import com.mekelaina.gramarye.blocks.tiles.ObeliskTile;
+import com.mekelaina.gramarye.capabilities.CapabilityExperia;
 import com.mekelaina.gramarye.util.CustomEnergyStorage;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.PlayerEntity;
@@ -55,7 +56,7 @@ public class PacketObelisk {
             TileEntity tile = serverWorld.getTileEntity(pos);
             if(tile instanceof ObeliskTile){
                 ObeliskTile temp = (ObeliskTile)tile;
-                temp.getCapability(CapabilityEnergy.ENERGY, null).ifPresent(iEnergyStorage -> ((CustomEnergyStorage)iEnergyStorage).setEnergy(obeliskXp));
+                temp.getCapability(CapabilityExperia.CAPABILITY_EXPERIA, null).ifPresent(experia -> experia.setExperiaAmount(obeliskXp));
                 if(!playerEntity.isCreative()) {
                     playerEntity.giveExperiencePoints(-(playerEntity.experienceTotal-playerXp));
                 }

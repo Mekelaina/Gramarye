@@ -2,8 +2,10 @@ package com.mekelaina.gramarye.blocks.tiles;
 
 import com.mekelaina.gramarye.Gramarye;
 import com.mekelaina.gramarye.capabilities.CapabilityExperia;
+import com.mekelaina.gramarye.capabilities.Experia;
 import com.mekelaina.gramarye.gui.containers.ChargerContainer;
 import com.mekelaina.gramarye.gui.containers.ObeliskContainer;
+import com.mekelaina.gramarye.items.AbstractSpellCaster;
 import com.mekelaina.gramarye.util.CustomEnergyStorage;
 import com.mekelaina.gramarye.util.IEMItem;
 import net.minecraft.entity.player.PlayerEntity;
@@ -30,22 +32,48 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.concurrent.atomic.AtomicReference;
 
-public class ChargerTile extends TileEntity implements ITickableTileEntity, INamedContainerProvider {
+public class ChargerTile extends LinkableTileEntity implements ITickableTileEntity, INamedContainerProvider {
 
     private LazyOptional<IItemHandler> handler = LazyOptional.of(this::createHandler);
     private LazyOptional<IEnergyStorage> energy = LazyOptional.of(this::createEnergy);
 
     private int age;
+    private int chargePerTick;
+    private int counter;
+
 
     public ChargerTile() {
         super(ModTileEntities.CHARGER_TILE.get());
+
     }
 
     @Override
     public void tick() {
+        if(!hasBeenInited){
+            this.init();
+        }
         if(!this.removed) {
             this.age++;
         }
+
+        if(counter > 0){
+            counter--;
+        }
+
+            if(handler.isPresent()){
+                if(!getCurrentItem().isEmpty() && getCurrentItem().getCapability(CapabilityExperia.CAPABILITY_EXPERIA).isPresent()){
+                    getCurrentItem().getCapability(CapabilityExperia.CAPABILITY_EXPERIA).ifPresent(experia -> {
+                        ItemStack stack = getCurrentItem();
+                        if(stack.getItem() instanceof AbstractSpellCaster){
+                            //((AbstractSpellCaster)stack.getItem()).depleteManaFromSupplier(chargePerTick, )
+                        }
+                        counter = 20;
+                        markDirty();
+                    });
+                }
+            }
+
+
     }
 
     @Nonnull
@@ -104,13 +132,16 @@ public class ChargerTile extends TileEntity implements ITickableTileEntity, INam
             @Override
             public ItemStack insertItem(int slot, @Nonnull ItemStack stack, boolean simulate) {
                 if(stack.getCapability(CapabilityExperia.CAPABILITY_EXPERIA).isPresent()){
-                    //Gramarye.LOGGER.debug("gweem");
+                    counter = 20;
                     return super.insertItem(slot, stack, simulate);
                 }
                 return stack;
             }
         };
     }
+
+
+
 
     public ItemStack getCurrentItem(){
         AtomicReference<ItemStack> stack = new AtomicReference<ItemStack>(ItemStack.EMPTY);

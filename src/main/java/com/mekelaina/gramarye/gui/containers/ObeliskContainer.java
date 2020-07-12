@@ -3,6 +3,8 @@ package com.mekelaina.gramarye.gui.containers;
 import com.mekelaina.gramarye.Gramarye;
 import com.mekelaina.gramarye.blocks.ModBlocks;
 import com.mekelaina.gramarye.blocks.tiles.ObeliskTile;
+import com.mekelaina.gramarye.capabilities.CapabilityExperia;
+import com.mekelaina.gramarye.capabilities.Experia;
 import com.mekelaina.gramarye.items.ModItems;
 import com.mekelaina.gramarye.util.CustomEnergyStorage;
 import net.minecraft.entity.player.PlayerEntity;
@@ -41,13 +43,13 @@ public class ObeliskContainer extends ExtendedContainer {
 
             @Override
             public void set(int value) {
-                tileEntity.getCapability(CapabilityEnergy.ENERGY).ifPresent(h -> ((CustomEnergyStorage)h).setEnergy(value));
+                tileEntity.getCapability(CapabilityExperia.CAPABILITY_EXPERIA).ifPresent(h -> h.setExperiaAmount(value));
             }
         });
     }
 
     public int getEnergy() {
-        return tileEntity.getCapability(CapabilityEnergy.ENERGY).map(IEnergyStorage::getEnergyStored).orElse(0);
+        return tileEntity.getCapability(CapabilityExperia.CAPABILITY_EXPERIA).map(Experia::getExperiaAmount).orElse(0);
     }
 
     @Override

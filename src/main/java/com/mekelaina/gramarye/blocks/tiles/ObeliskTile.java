@@ -2,6 +2,9 @@ package com.mekelaina.gramarye.blocks.tiles;
 
 import com.mekelaina.gramarye.Gramarye;
 import com.mekelaina.gramarye.blocks.ModBlocks;
+import com.mekelaina.gramarye.capabilities.CapabilityExperia;
+import com.mekelaina.gramarye.capabilities.CapabilityProviderExperia;
+import com.mekelaina.gramarye.capabilities.Experia;
 import com.mekelaina.gramarye.gui.containers.ObeliskContainer;
 import com.mekelaina.gramarye.items.ModItems;
 import com.mekelaina.gramarye.util.CustomEnergyStorage;
@@ -37,6 +40,7 @@ public class ObeliskTile extends TileEntity implements ITickableTileEntity, INam
 
     private LazyOptional<IItemHandler> handler = LazyOptional.of(this::createHandler);
     private LazyOptional<IEnergyStorage> energy = LazyOptional.of(this::createEnergy);
+    private LazyOptional<Experia> experia = LazyOptional.of(this::createExperia);
 
     private ArrayList<InputWrapper> toProcess = new ArrayList<>();
 
@@ -62,7 +66,8 @@ public class ObeliskTile extends TileEntity implements ITickableTileEntity, INam
         if(counter > 0) {
             counter--;
             if(counter <= 0) {
-                energy.ifPresent(e -> ((CustomEnergyStorage)e).addEnergy(getXpPerInput()));
+                //energy.ifPresent(e -> ((CustomEnergyStorage)e).addEnergy(getXpPerInput()));
+                experia.ifPresent(experia1 -> experia1.addExperia(getXpPerInput()));
                 inputType = 0;
             }
             markDirty();
@@ -100,7 +105,7 @@ public class ObeliskTile extends TileEntity implements ITickableTileEntity, INam
 
         toProcess.clear();*/
 
-        sendOutPower();
+      //  sendOutPower();
 
     }
 
@@ -135,8 +140,10 @@ public class ObeliskTile extends TileEntity implements ITickableTileEntity, INam
     public void read(CompoundNBT compound) {
         CompoundNBT invTag = compound.getCompound("inv");
         handler.ifPresent(handler1 -> ((INBTSerializable<CompoundNBT>)handler1).deserializeNBT(invTag));
-        CompoundNBT energyTag = compound.getCompound("experion");
-        energy.ifPresent(energy1 -> ((CustomEnergyStorage)energy1).setEnergy(energyTag.getInt("experion")));
+        CompoundNBT energyTag = compound.getCompound("experia");
+        experia.ifPresent(experia1 -> experia1.setExperiaAmount(energyTag.getInt("experia")));
+        //energy.ifPresent(energy1 -> ((CustomEnergyStorage)energy1).setEnergy(energyTag.getInt("experion")));
+
         CompoundNBT speedTag = compound.getCompound("speed");
         this.speed = speedTag.getDouble("speed");
         super.read(compound);
@@ -148,9 +155,10 @@ public class ObeliskTile extends TileEntity implements ITickableTileEntity, INam
             CompoundNBT compoundNBT = ((INBTSerializable<CompoundNBT>)h).serializeNBT();
             compound.put("inv", compoundNBT);
         });
-        energy.ifPresent(h -> {
-            CompoundNBT compoundNBT = ((INBTSerializable<CompoundNBT>)h).serializeNBT();
-            compound.put("experion", compoundNBT);
+        experia.ifPresent(h -> {
+            CapabilityProviderExperia temp = new CapabilityProviderExperia(h);
+           // CompoundNBT compoundNBT = ((INBTSerializable<CompoundNBT>)temp).serializeNBT();
+           // compound.put("experia", compoundNBT);
         });
         compound.putDouble("speed", this.speed);
         return super.write(compound);
@@ -190,8 +198,8 @@ public class ObeliskTile extends TileEntity implements ITickableTileEntity, INam
         if(cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
             return handler.cast();
         }
-        if(cap == CapabilityEnergy.ENERGY) {
-            return energy.cast();
+        if(cap == CapabilityExperia.CAPABILITY_EXPERIA) {
+            return experia.cast();
         }
         return super.getCapability(cap, side);
     }
@@ -209,6 +217,10 @@ public class ObeliskTile extends TileEntity implements ITickableTileEntity, INam
 
     private IEnergyStorage createEnergy() {
         return new CustomEnergyStorage(2048, 0);
+    }
+
+    private Experia createExperia(){
+        return new Experia(2048, false);
     }
 
     private int getXpPerInput()
@@ -277,15 +289,15 @@ public class ObeliskTile extends TileEntity implements ITickableTileEntity, INam
 
     public int getCapacity() {
         AtomicInteger temp = new AtomicInteger();
-         energy.ifPresent(e -> {
-             temp.set(e.getMaxEnergyStored());});
+         experia.ifPresent(e -> {
+             temp.set(e.getMaxAmount());});
          return temp.get();
     }
 
     public int getEnergy() {
         AtomicInteger temp = new AtomicInteger();
-        energy.ifPresent(e -> {
-            temp.set(e.getEnergyStored());
+        experia.ifPresent(e -> {
+            temp.set(e.getExperiaAmount());
         });
         return temp.get();
     }
