@@ -83,7 +83,7 @@ public class ObeliskScreen extends ContainerScreen<ObeliskContainer> {
     }
 
     private int getExperienceStoredScaled(int pixels) {
-        int i = this.container.getEnergy();
+        int i = this.obeliskTile.getEnergy();
         int j = this.obeliskTile.getCapacity();
         return i != 0 && j != 0 ? i * pixels / j : 0;
     }

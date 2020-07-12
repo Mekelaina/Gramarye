@@ -141,7 +141,7 @@ public class ObeliskTile extends TileEntity implements ITickableTileEntity, INam
         CompoundNBT invTag = compound.getCompound("inv");
         handler.ifPresent(handler1 -> ((INBTSerializable<CompoundNBT>)handler1).deserializeNBT(invTag));
         CompoundNBT energyTag = compound.getCompound("experia");
-        experia.ifPresent(experia1 -> experia1.setExperiaAmount(energyTag.getInt("experia")));
+        experia.ifPresent(experia1 -> experia1.readNBT(energyTag));
         //energy.ifPresent(energy1 -> ((CustomEnergyStorage)energy1).setEnergy(energyTag.getInt("experion")));
 
         CompoundNBT speedTag = compound.getCompound("speed");
@@ -156,9 +156,8 @@ public class ObeliskTile extends TileEntity implements ITickableTileEntity, INam
             compound.put("inv", compoundNBT);
         });
         experia.ifPresent(h -> {
-            CapabilityProviderExperia temp = new CapabilityProviderExperia(h);
-           // CompoundNBT compoundNBT = ((INBTSerializable<CompoundNBT>)temp).serializeNBT();
-           // compound.put("experia", compoundNBT);
+
+            compound.put("experia", h.writeNBT());
         });
         compound.putDouble("speed", this.speed);
         return super.write(compound);
@@ -245,10 +244,10 @@ public class ObeliskTile extends TileEntity implements ITickableTileEntity, INam
 
     public boolean insertXp(int amount) {
         AtomicBoolean rtn = new AtomicBoolean(false);
-        energy.ifPresent(iEnergyStorage -> {
-            int temp = XPMathUtils.getXpToInsert(iEnergyStorage.getEnergyStored(),
-                    iEnergyStorage.getMaxEnergyStored(), amount);
-            ((CustomEnergyStorage)iEnergyStorage).addEnergy(temp);
+        experia.ifPresent(experia -> {
+            int temp = XPMathUtils.getXpToInsert(experia.getExperiaAmount(),
+                    experia.getMaxAmount(), amount);
+            experia.addExperia(temp);
             rtn.set(true);
             markDirty();
         });
@@ -261,12 +260,12 @@ public class ObeliskTile extends TileEntity implements ITickableTileEntity, INam
 
     public boolean removeXp(int amount) {
         AtomicBoolean rtn = new AtomicBoolean(false);
-        energy.ifPresent(iEnergyStorage -> {
-            Gramarye.LOGGER.debug("remove bii");
-            int temp = XPMathUtils.getXpToRemove(iEnergyStorage.getEnergyStored(),
-                    iEnergyStorage.getMaxEnergyStored(), amount);
-            Gramarye.LOGGER.debug(amount);
-            ((CustomEnergyStorage)iEnergyStorage).consumeEnergy(temp);
+        experia.ifPresent(experia -> {
+            //Gramarye.LOGGER.debug("remove bii");
+            int temp = XPMathUtils.getXpToRemove(experia.getExperiaAmount(),
+                    experia.getMaxAmount(), amount);
+            //Gramarye.LOGGER.debug(amount);
+            experia.subtractExperia(temp);
             //Gramarye.LOGGER.debug(iEnergyStorage.getEnergyStored());
             rtn.set(true);
             markDirty();

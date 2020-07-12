@@ -8,9 +8,10 @@ import net.minecraftforge.common.capabilities.Capability;
 
 import javax.annotation.Nullable;
 
-public class Experia {
+public class Experia  {
     private int experiaAmount;
     private int maxAmount;
+    private ExperiaNBTStorage storage;
 
     public Experia() {
         this(0, false);
@@ -19,6 +20,7 @@ public class Experia {
     public Experia(int initialExperiaAmount, boolean fill) {
         experiaAmount = fill ? initialExperiaAmount : 0;
         maxAmount = initialExperiaAmount;
+        storage = new ExperiaNBTStorage();
     }
 
     public int getExperiaAmount() {
@@ -49,6 +51,15 @@ public class Experia {
 
     public void setMaxAmount(int newMaxAmount){
         maxAmount = newMaxAmount;
+    }
+
+    public CompoundNBT writeNBT(){
+        CompoundNBT compoundNBT = (CompoundNBT) storage.writeNBT(CapabilityExperia.CAPABILITY_EXPERIA, this,null);
+        return compoundNBT;
+    }
+
+    public void readNBT(CompoundNBT nbt){
+        storage.readNBT(CapabilityExperia.CAPABILITY_EXPERIA, this, null, nbt);
     }
 
     public static class ExperiaNBTStorage implements Capability.IStorage<Experia> {
